@@ -1,0 +1,19 @@
+
+version: '2.0'
+
+services:
+    icalaggregator:
+        container_name: icalaggregator
+        image: php:fpm-alpine
+        volumes:
+            - "${HOME}/public_html/php/iCalAggregator:/var/www/php/iCalAggregator"
+        expose:
+            - "9000"
+        restart: always
+        networks:
+            - caddy
+
+networks:
+    caddy:
+        external: 
+            name: caddy_default
